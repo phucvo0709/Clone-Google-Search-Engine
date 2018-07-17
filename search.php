@@ -1,6 +1,7 @@
 <?php
 include("config.php");
 include("classes/SiteResultsProvider.php");
+include("classes/ImageResultsProvider.php");
     if(isset($_GET["term"])){
         $term = $_GET["term"];
     }else{
@@ -17,7 +18,10 @@ include("classes/SiteResultsProvider.php");
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Google</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -31,6 +35,7 @@ include("classes/SiteResultsProvider.php");
                 <div class="searchContainer">
                     <form action="search.php" method="get">
                         <div class="searchBarContainer">
+                            <input type="hidden" name="type" value="<?php echo $type; ?>">
                             <input type="text" class="searchBox" name="term" value="<?php echo $term; ?>">
                             <button class="searchButton"><img src="assets/images/icons/search.png"></button>
                         </div>
@@ -54,8 +59,13 @@ include("classes/SiteResultsProvider.php");
         </div>
         <div class="mainResultsSection">
             <?php
-                $resultsProvider = new SiteResultsProvider($con);
-                $pageLimit = 20;
+                if($type == "sites"){
+                    $resultsProvider = new SiteResultsProvider($con);
+                    $pageLimit = 20;
+                }else{
+                    $resultsProvider = new ImageResultsProvider($con);
+                    $pageLimit = 30;
+                }
 
                 $numResults = $resultsProvider->getNumResults($term);
                 echo "<p class='resultsCount'>About $numResults results</p>";
@@ -104,5 +114,8 @@ include("classes/SiteResultsProvider.php");
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script type="text/javascript" src="assets/js/script.js"></script>
 </body>
 </html>
