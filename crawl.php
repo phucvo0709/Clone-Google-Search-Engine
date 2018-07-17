@@ -127,5 +127,7 @@ function followLinks($url) {
         followLinks($site);
     }
 }
-$start_url = "https://vnexpress.net/";
-followLinks($start_url);
+if(isset($_POST['url'])){
+    $start_url = $_POST['url'];
+    followLinks($start_url);
+}

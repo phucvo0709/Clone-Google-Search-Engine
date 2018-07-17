@@ -7,6 +7,22 @@ body {
     margin: 0;
     height: 100%;
 }
+.textGradient {
+    margin-top: 10px;
+    text-align: center;
+
+    background: linear-gradient(to right, #66d9ff 20%, #8c66ff 40%, #8c66ff 60%, #66d9ff 80%);
+    background-size: 200% auto;
+
+    color: #000;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: shine 1s linear infinite;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -240,4 +256,9 @@ a .pageNumber {
 
 .gridItem:hover .details {
     visibility: visible;
+}
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
 }
