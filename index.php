@@ -12,7 +12,7 @@
     <div class="wrapper indexPage">
         <div class="mainSection">
             <div class="logoContainer">
-                <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google Title">
+                <img src="assets/images/logo.png" alt="Google Title">
             </div>
             <div class="searchContainer">
                 <form action="search.php" method="get">
