@@ -21,6 +21,7 @@ There are many functions I will continue to develop if it is good to have a rati
 
 ![Image 6](https://imgur.com/tkYqbUm.png)
 
+:)
 
 
 
